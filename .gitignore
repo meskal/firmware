@@ -6,6 +6,7 @@ src/dl/
 src/openwrt/
 src/packages/fastd/
 src/packages/libremap/
+src/packages/luci
 src/packages/openwrt/
 src/packages/routing/
 .project

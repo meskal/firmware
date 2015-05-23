@@ -24,6 +24,11 @@ ROUTING=(routing
          ../../../build_patches/0001-batman-adv-no-rebroadcast-option.patch)
 ROUTING_PKGS="alfred kmod-batman-adv kmod-batgat"
 
+LUCI=(luci
+      git
+      https://github.com/openwrt/luci.git
+      luci-0.12)
+
 FASTD=(fastd
        git
        git://git.metameute.de/lff/pkg_fastd
@@ -33,7 +38,7 @@ FASTD_PKGS="fastd libuecc"
 LIBREMAP=(libremap
           git
           https://github.com/libremap/libremap-agent-openwrt.git
-          7194289d4b8a009df10613a3a88dc841fa26f423)
+          1d26f6acecd039ffc7bd4a574eb7e6e6f1ee1e1e)
 LIBREMAP_PKGS="libremap-agent"
 
 FFOL=(ffol
@@ -41,7 +46,7 @@ FFOL=(ffol
       ${PWD}/src/packages/ffol/)
 FFOL_PKGS="nodewatcher"
 
-FEEDS=(OPENWRT ROUTING FASTD LIBREMAP FFOL)
+FEEDS=(OPENWRT LUCI ROUTING FASTD LIBREMAP FFOL)
 
 checkout_svn(){
 	local DIRECTORY=$1
