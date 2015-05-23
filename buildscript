@@ -2,8 +2,8 @@
 
 builddir=./build
 
-OPENWRTREV=45715
-OPENWRTURL=svn://svn.openwrt.org/openwrt/branches/barrier_breaker
+OPENWRTREV="179bab8b1700d74b28cc6cd25322f9a1ad670107"
+OPENWRTURL="git://git.openwrt.org/14.07/openwrt.git"
 PACKAGEREV="e9e1c3071e81580f5d29b7da501d38ee9c4ddafa"
 PACKAGEURL="https://github.com/openwrt/packages.git"
 
@@ -102,7 +102,7 @@ get_source() {
 	cd src
 
 	#Get the OpenWrt Core Source for Firmware
-	checkout_svn openwrt $OPENWRTURL $OPENWRTREV
+	checkout_git openwrt $OPENWRTURL $OPENWRTREV
 
 	test -d packages || mkdir packages
 	cd packages
@@ -141,7 +141,7 @@ prepare() {
 	test -d $builddir || mkdir $builddir
 
 	/bin/rm -rf $target
-	svn export src/openwrt $target
+	cp -R src/openwrt $target
 
 	## generate own feeds.conf
 	#this local variable should be globally configure variable used in get_source and here
