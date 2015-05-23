@@ -8,5 +8,6 @@ src/packages/fastd/
 src/packages/libremap/
 src/packages/luci
 src/packages/openwrt/
+src/packages/openwrt_oldpackages/
 src/packages/routing/
 .project

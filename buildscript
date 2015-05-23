@@ -16,6 +16,11 @@ OPENWRT=(openwrt
          ${PACKAGEREV})
 OPENWRT_PKGS="bridge ethtool gpioctl-sysfs horst libugpio mii-tool wavemon kmod-gpiotoggling"
 
+OPENWRT_OLDPACKAGES=(openwrt_oldpackages
+                     git
+                     http://git.openwrt.org/14.07/packages.git
+                     aaf24e40a93fc154f793c0fcbf96c667da0866d3)
+
 #official openwrt routing packages
 ROUTING=(routing
          git
@@ -46,7 +51,7 @@ FFOL=(ffol
       ${PWD}/src/packages/ffol/)
 FFOL_PKGS="nodewatcher"
 
-FEEDS=(OPENWRT LUCI ROUTING FASTD LIBREMAP FFOL)
+FEEDS=(OPENWRT LUCI ROUTING OPENWRT_OLDPACKAGES FASTD LIBREMAP FFOL)
 
 checkout_svn(){
 	local DIRECTORY=$1
