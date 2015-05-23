@@ -4,16 +4,16 @@ builddir=./build
 
 OPENWRTREV=45715
 OPENWRTURL=svn://svn.openwrt.org/openwrt/branches/barrier_breaker
-PACKAGEREV=${OPENWRTREV}
-PACKAGEURL=svn://svn.openwrt.org/openwrt/packages
+PACKAGEREV="e9e1c3071e81580f5d29b7da501d38ee9c4ddafa"
+PACKAGEURL="https://github.com/openwrt/packages.git"
 
 ## Feed definition [0]: name aka directory [1]: type git vs svn [2]: url [3]: revision evtl [4]: Patches
 
 #official openwrt packages
 OPENWRT=(openwrt
          git
-         https://github.com/openwrt/packages.git
-         e9e1c3071e81580f5d29b7da501d38ee9c4ddafa)
+         ${PACKAGEURL}
+         ${PACKAGEREV})
 OPENWRT_PKGS="bridge ethtool gpioctl-sysfs horst libugpio mii-tool wavemon kmod-gpiotoggling"
 
 #official openwrt routing packages
