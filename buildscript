@@ -7,7 +7,7 @@ OPENWRTURL="git://git.openwrt.org/14.07/openwrt.git"
 PACKAGEREV="e9e1c3071e81580f5d29b7da501d38ee9c4ddafa"
 PACKAGEURL="https://github.com/openwrt/packages.git"
 
-## Feed definition [0]: name aka directory [1]: type git vs svn [2]: url [3]: revision evtl [4]: Patches
+## Feed definition [0]: name aka directory [1]: type git [2]: url [3]: revision evtl [4]: Patches
 
 #official openwrt packages
 OPENWRT=(openwrt
@@ -52,33 +52,6 @@ FFOL=(ffol
 FFOL_PKGS="nodewatcher"
 
 FEEDS=(OPENWRT LUCI ROUTING OPENWRT_OLDPACKAGES FASTD LIBREMAP FFOL)
-
-checkout_svn(){
-	local DIRECTORY=$1
-	local REPO_URL=$2
-	local REVISION=$3
-
-	echo checking out $REPO_URL to $DIRECTORY in version $REVISION
-	if [ -d $DIRECTORY ]; then
-		local url=$(svn info ${DIRECTORY} | awk '/^URL/ { print $2 }')
-		if [ "$url" = "$REPO_URL" ]; then
-			if [ -z "$REVISION" ]; then
-				svn update $DIRECTORY
-			else
-				local rev=$(svn info $DIRECTORY | awk '/^Revision:/ { print $2 }')
-				if [ "$rev" -ne "$REVISION" ]; then
-					svn update -r $REVISION $DIRECTORY
-				fi
-			fi
-		else
-			echo wrong svn url -\> deleting whole directory
-			/bin/rm -rf $DIRECTORY
-			svn checkout -r $REVISION $REPO_URL $DIRECTORY
-		fi
-	else
-		svn checkout -r $REVISION $REPO_URL $DIRECTORY
-	fi
-}
 
 checkout_git(){
 	local DIRECTORY=$1
@@ -128,9 +101,7 @@ get_source() {
 		local PATCH=${FEED[4]}
 
 		echo Adding Feed $NAME
-		if [[ $TYPE == "svn" ]] ; then
-			checkout_svn $NAME $URL $REV
-		elif [[ $TYPE == "git" ]] ; then
+		if [[ $TYPE == "git" ]] ; then
 			checkout_git $NAME $URL $REV
 			# Patches for feeds could be stored in known directories like build_patches/$NAME/
 			# That way multiple patches for one feed could be supported
