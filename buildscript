@@ -2,7 +2,7 @@
 
 builddir=./build
 
-OPENWRTREV=42096
+OPENWRTREV=45715
 OPENWRTURL=svn://svn.openwrt.org/openwrt/branches/barrier_breaker
 PACKAGEREV=${OPENWRTREV}
 PACKAGEURL=svn://svn.openwrt.org/openwrt/packages
@@ -11,16 +11,16 @@ PACKAGEURL=svn://svn.openwrt.org/openwrt/packages
 
 #official openwrt packages
 OPENWRT=(openwrt
-         svn
-         svn://svn.openwrt.org/openwrt/packages
-         $OPENWRTREV)
+         git
+         https://github.com/openwrt/packages.git
+         e9e1c3071e81580f5d29b7da501d38ee9c4ddafa)
 OPENWRT_PKGS="bridge ethtool gpioctl-sysfs horst libugpio mii-tool wavemon kmod-gpiotoggling"
 
 #official openwrt routing packages
 ROUTING=(routing
          git
          https://github.com/openwrt-routing/packages.git
-         44318d05898069300ce2ad6eb05eb40f232e7123
+         5d4ad63897b435d5df0f39a49bd58962c22c33b8
          ../../../build_patches/0001-batman-adv-no-rebroadcast-option.patch)
 ROUTING_PKGS="alfred kmod-batman-adv kmod-batgat"
 
