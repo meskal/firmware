@@ -45,7 +45,7 @@ index 0000000..57d8491
 +index c60d3ed..4c27f05 100644
 +--- a/hard-interface.c
 ++++ b/hard-interface.c
-+@@ -602,6 +602,8 @@ batadv_hardif_add_interface(struct net_device *net_dev)
++@@ -591,6 +591,8 @@ batadv_hardif_add_interface(struct net_device *net_dev)
 + 	/* extra reference for return */
 + 	atomic_set(&hard_iface->refcount, 2);
 + 
@@ -58,7 +58,7 @@ index 0000000..57d8491
 +index c83be5e..2a0e0cc 100644
 +--- a/send.c
 ++++ b/send.c
-+@@ -496,6 +496,10 @@ static void batadv_send_outstanding_bcast_packet(struct work_struct *work)
++@@ -513,6 +513,10 @@ static void batadv_send_outstanding_bcast_packet(struct work_struct *work)
 + 		if (forw_packet->num_packets >= hard_iface->num_bcasts)
 + 			continue;
 + 
@@ -91,7 +91,7 @@ index 0000000..57d8491
 +index 096b511..5e2cd21 100644
 +--- a/sysfs.c
 ++++ b/sysfs.c
-+@@ -110,6 +110,17 @@ struct batadv_attribute batadv_attr_vlan_##_name = {	\
++@@ -108,6 +108,17 @@ struct batadv_attribute batadv_attr_vlan_##_name = {	\
 + 	.store  = _store,				\
 + };
 + 
@@ -109,7 +109,7 @@ index 0000000..57d8491
 + /* Use this, if you have customized show and store functions */
 + #define BATADV_ATTR(_name, _mode, _show, _store)	\
 + struct batadv_attribute batadv_attr_##_name = {		\
-+@@ -215,6 +226,52 @@ ssize_t batadv_show_vlan_##_name(struct kobject *kobj,			\
++@@ -213,6 +224,52 @@ ssize_t batadv_show_vlan_##_name(struct kobject *kobj,			\
 + 	static BATADV_ATTR_VLAN(_name, _mode, batadv_show_vlan_##_name,	\
 + 				batadv_store_vlan_##_name)
 + 
@@ -162,7 +162,7 @@ index 0000000..57d8491
 + static int batadv_store_bool_attr(char *buff, size_t count,
 + 				  struct net_device *net_dev,
 + 				  const char *attr_name, atomic_t *attr)
-+@@ -750,10 +807,12 @@ static ssize_t batadv_show_iface_status(struct kobject *kobj,
++@@ -834,10 +891,12 @@ static ssize_t batadv_show_iface_status(struct kobject *kobj,
 + static BATADV_ATTR(mesh_iface, S_IRUGO | S_IWUSR, batadv_show_mesh_iface,
 + 		   batadv_store_mesh_iface);
 + static BATADV_ATTR(iface_status, S_IRUGO, batadv_show_iface_status, NULL);
@@ -179,7 +179,7 @@ index 0000000..57d8491
 +index f323822..b5a5824 100644
 +--- a/types.h
 ++++ b/types.h
-+@@ -76,6 +76,7 @@ struct batadv_hard_iface {
++@@ -101,6 +101,7 @@ struct batadv_hard_iface {
 + 	struct rcu_head rcu;
 + 	struct batadv_hard_iface_bat_iv bat_iv;
 + 	struct work_struct cleanup_work;
