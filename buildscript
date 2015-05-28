@@ -46,12 +46,7 @@ LIBREMAP=(libremap
           1d26f6acecd039ffc7bd4a574eb7e6e6f1ee1e1e)
 LIBREMAP_PKGS="libremap-agent"
 
-FFOL=(ffol
-      'local'
-      ${PWD}/src/packages/ffol/)
-FFOL_PKGS="nodewatcher"
-
-FEEDS=(OPENWRT LUCI ROUTING OPENWRT_OLDPACKAGES FASTD LIBREMAP FFOL)
+FEEDS=(OPENWRT LUCI ROUTING OPENWRT_OLDPACKAGES FASTD LIBREMAP)
 
 checkout_git(){
 	local DIRECTORY=$1
