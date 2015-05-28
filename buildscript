@@ -25,7 +25,7 @@ OPENWRT_OLDPACKAGES=(openwrt_oldpackages
 ROUTING=(routing
          git
          https://github.com/openwrt-routing/packages.git
-         5d4ad63897b435d5df0f39a49bd58962c22c33b8
+         8b98b8a0df06cfb222bbaa14fcdc3e8289698193
          ../../../build_patches/0001-batman-adv-no-rebroadcast-option.patch)
 ROUTING_PKGS="alfred kmod-batman-adv kmod-batgat"
 
